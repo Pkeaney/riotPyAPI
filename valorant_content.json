@@ -1,0 +1,25 @@
+{
+    "name": "Fade",
+    "localizedNames": {
+        "ar-AE": "\u0641\u0627\u064a\u062f",
+        "de-DE": "Fade",
+        "en-US": "Fade",
+        "es-ES": "Fade",
+        "es-MX": "Fade",
+        "fr-FR": "Fade",
+        "id-ID": "Fade",
+        "it-IT": "Fade",
+        "ja-JP": "\u30d5\u30a7\u30a4\u30c9",
+        "ko-KR": "\ud398\uc774\ub4dc",
+        "pl-PL": "Fade",
+        "pt-BR": "Fade",
+        "ru-RU": "Fade",
+        "th-TH": "Fade",
+        "tr-TR": "FADE",
+        "vi-VN": "Fade",
+        "zh-CN": "\u9ed1\u68a6",
+        "zh-TW": "\u83f2\u5fb7"
+    },
+    "id": "DADE69B4-4F5A-8528-247B-219E5A1FACD6",
+    "assetName": "Default__BountyHunter_PrimaryAsset_C"
+}

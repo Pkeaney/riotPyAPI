@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Valorant API Fetcher</title>
+</head>
+<body>
+    <h1>Valorant API Search</h1>
+    <form method="post">
+        <label>Enter Region (e.g., eu, na, ap):</label>
+        <input type="text" name="region" required><br><br>
+
+        <label>Search for an Agent (optional):</label>
+        <input type="text" name="agent"><br><br>
+
+        <button type="submit">Fetch Data</button>
+    </form>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if agent_data %}
+        <h2>Agent Found:</h2>
+        <pre>{{ agent_data | tojson(indent=4) }}</pre>
+    {% elif data and not agent_data %}
+        <h2>Fetched Content:</h2>
+        <pre>{{ data | tojson(indent=4) }}</pre>
+    {% endif %}
+</body>
+</html>
