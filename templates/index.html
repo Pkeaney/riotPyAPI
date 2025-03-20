@@ -1,30 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valorant API Fetcher</title>
+	
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Valorant API Search</h1>
-    <form method="post">
-        <label>Enter Region (e.g., eu, na, ap):</label>
-        <input type="text" name="region" required><br><br>
+<body class="bg-grey-100 font-sans">
+
+
+	<!-- Main container  -->
+	<div class="max-w-lg mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+    <h1 class="text-2x1 font-semibold text-center text-gray-800 mb-6">Valorant API Search</h1>
+    <form action="/" method="post">
+        <label for="character" class="block text-grey-700">Enter Region (e.g., eu, na, ap):</label>
+        <input 
+	type="text"
+	id="c-region"
+	name="region"
+	class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+	placeholder="e.g., eu, na, ap..."
+	required><br><br>
 
         <label>Search for an Agent (optional):</label>
-        <input type="text" name="agent"><br><br>
+	<input 
+	type="text" 
+	id="c-character"
+	name="agent"
+	class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none f    ocus:ring-2 focus:ring-blue-500"
+	placeholder="e.g., Gekko"
+	required><br><br>
+	
+	</div>
 
-        <button type="submit">Fetch Data</button>
+        <button type="submit" class="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600">Fetch Data</button>
     </form>
 
-    {% if error %}
-        <p style="color: red;">{{ error }}</p>
-    {% endif %}
+    {% if json_output %}
+	<div class="mt-8 p-4 bg-gray-200 rounded-lg">
+	<h3 class="text-lg font-semibold text-gray-800 mb-2">Saved Character Data:</h3>
+	<pre class="text-sm text-gray-700 whitespace-pre-wrap">{{ json_output | tojson(indent=2) }}</pre>
+	</div>
+	{% else %}
+	<p class="text-gray-600 mt-4 text-center">No data available.  Search for a valid character to see details.</p>
+	{% endif %}
 
-    {% if agent_data %}
+	</div>
+
+	<!-- Display results  -->
+<!--	{% if agent_data %}
         <h2>Agent Found:</h2>
         <pre>{{ agent_data | tojson(indent=4) }}</pre>
     {% elif data and not agent_data %}
         <h2>Fetched Content:</h2>
         <pre>{{ data | tojson(indent=4) }}</pre>
-    {% endif %}
+	{% endif %} -->
 </body>
 </html>

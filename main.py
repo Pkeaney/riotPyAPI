@@ -17,8 +17,15 @@ if api_key:
 else:
     print("API key is missing.  Please check your .env file.")
 
+def load_json_data():
+    try:
+        with open("valorant_content.json","r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+
 @app.route("/", methods=["GET", "POST"])
-def home():
+def index():
     data = None
     error = None
     agent_data = None
@@ -55,6 +62,8 @@ def home():
                     if agent_data:
                         with open("valorant_content.json","w") as file:
                             json.dump(agent_data, file, indent=4)
+                        json_output=load_json_data()
+
                     else:
                         error = f"No agent found for '{agent_name}'"
 
@@ -67,7 +76,7 @@ def home():
             else:
                 error = f"Error: {response.status_code}: {response.text}"
 
-    return render_template("index.html", data=data, agent_data=agent_data, error=error, saved_region=session.get("region", ""), saved_agent=session.get("agent_name", ""))
+    return render_template("index.html", data=data, agent_data=agent_data, error=error, saved_region=session.get("region", ""), saved_agent=session.get("agent_name", ""), json_output=load_json_data())
 
 if __name__ == "__main__":
     app.run(debug=True)
